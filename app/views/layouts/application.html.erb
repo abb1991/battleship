@@ -2,26 +2,32 @@
 <html>
   <head>
     <title>Battleship</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <h1 class="logo">Battleship</h1>
     <nav class="nav-bar">
-      <a class="nav" href="/">Home</a>
+      <a class="nav nav-a" href="/">Home</a>
       <a class="nav" href="/users">High Scores</a>
 
       <% if @current_user %>
-           <%= link_to 'Logout', logout_path, :class => "nav" %>  <a href="/users/ <%= @current_user.id %>"><%= @current_user.username.upcase  %> </a>
+           <%= link_to 'Logout', logout_path, :class => "nav" %>  <a  class="nav" href="/users/ <%= @current_user.id %>"><%= @current_user.username.upcase  %> </a>
       <% else %>
         <%= link_to 'Login', login_path, :class => "nav" %>  <%= link_to 'Signup', signup_path %>
       <% end %>
     </nav>
-    <div class="wait home-boat happy-waves-background">
-      <div ><%= image_tag("boat", :class => "ship-animation")  %></div>
-    </div >
-      <div class="happy-waves-background"><%= image_tag("happy-waves", :class => "happy-waves")  %>
-        <%= image_tag("happy-waves", :class => "happy-waves")  %>
+
+
+  </head>
+
+  <body>
+
+    <%= yield %>
+     <div class="happy-waves-background"><%= image_tag("happy-waves", :class => "happy-waves")  %>
         <%= image_tag("happy-waves", :class => "happy-waves")  %>
         <%= image_tag("happy-waves", :class => "happy-waves")  %>
         <%= image_tag("happy-waves", :class => "happy-waves")  %>
@@ -34,11 +40,5 @@
         <%= image_tag("happy-waves", :class => "happy-waves")  %>
         <%= image_tag("happy-waves", :class => "happy-waves")  %>
       </div>
-
-  </head>
-
-  <body>
-
-    <%= yield %>
   </body>
 </html>
